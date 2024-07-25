@@ -1,0 +1,20 @@
+name: concessionaria
+services:
+  backend:
+    build:
+      context: ./BE
+    ports:
+      - "8000:8000"
+    networks:
+      - app-network
+  frontend:
+    build:
+      context: ./FE
+    ports:
+      - "8501:8501"
+    networks:
+      - app-network
+networks:
+  app-network:
+    driver: bridge
+    external: false

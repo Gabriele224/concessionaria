@@ -1,0 +1,49 @@
+name: concessionaria
+
+services:
+
+  db_mysql:
+
+    image: mysql:8.0
+
+    container_name: db_mysql
+
+    restart: unless-stopped
+
+    environment:
+
+      MYSQL_ROOT_PASSWORD: Gabry678
+
+      MYSQL_DATABASE: automotosprint
+
+      MYSQL_USER: gabriele
+
+      MYSQL_PASSWORD: Gabry678
+
+    ports:
+
+      - "3307:3307"
+
+    expose:
+
+      - 3307
+
+    networks:
+
+      - app-network
+
+    volumes:
+
+      - db_data:/var/lib/mysql
+
+      - ./init_db:/docker-entrypoint-initdb.d
+
+volumes:
+
+  db_data:
+
+networks:
+
+  app-network:
+
+    external: false
